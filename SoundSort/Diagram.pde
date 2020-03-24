@@ -39,5 +39,9 @@ class Diagram {
     
   }
   
+  public void removeChar(){
+    charBar.clear();
+  }
+  
   
 }
