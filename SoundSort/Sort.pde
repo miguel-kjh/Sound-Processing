@@ -1,18 +1,18 @@
 abstract class Sort{
   
-  protected int[] array;
+  protected ListOfNotes notes;
   protected int index;
   protected boolean isArraySort;
   
-  public Sort(int[] array, int index){
-    this.array = array.clone();
+  public Sort(ListOfNotes notes, int index){
+    this.notes = notes;
     this.index = index;
     this.isArraySort = isSort();
   }
   
   protected boolean isSort(){
-    for(int i = 0; i < array.length-1; i++){
-      if(array[i] > array[i+1]){
+    for(int i = 0; i < notes.size()-1; i++){
+      if(notes.getValue(i) > notes.getValue(i+1)){
         return false;
       }
     }
@@ -22,99 +22,112 @@ abstract class Sort{
   public abstract void doSort();
   
   public int[] getArray(){
-    return array;
+    return notes.getValues();
   }
   
   public boolean itSorted(){
     return isArraySort;
   }
+  
+  public void shuflle(){
+    notes.shuflle();
+    this.isArraySort = isSort();
+  }
 }
 
 class SelectionSort extends Sort{
   
-  public SelectionSort(int[] array){
-    super(array,0);
+  public SelectionSort(ListOfNotes notes){
+    super(notes,0);
   }
   
   public void doSort(){
     if(!isArraySort){
       int min_idx = index; 
-      for (int j = index+1; j < array.length; j++) 
-          if (array[j] < array[min_idx]) min_idx = j;
-      int temp = array[min_idx]; 
-      array[min_idx] = array[index];
-      array[index]   = temp;
+      for (int j = index+1; j < notes.size(); j++) 
+          if (notes.getValue(j) < notes.getValue(min_idx)) min_idx = j;
+      Note temp = notes.getNote(min_idx); 
+      notes.changeValue(min_idx,notes.getNote(index));
+      notes.changeValue(index,temp);
       index++;
       isArraySort = isSort();
+    } else {
+      int randomIndex = int(random(0,notes.size()));
+      notes.getNote(randomIndex).play();
     }
   }
 }
 
 class BubbleSort extends Sort {
   
-  public BubbleSort(int[] array){
-    super(array,0);
+  public BubbleSort(ListOfNotes notes){
+    super(notes,0);
   }
   
   public void doSort(){
     if(!isArraySort){
-      for (int j = 0; j < array.length-index-1; j++){ 
-        if (array[j] > array[j+1]){ 
-            int temp   = array[j]; 
-            array[j]   = array[j+1]; 
-            array[j+1] = temp; 
+      for (int j = 0; j < notes.size()-index-1; j++){ 
+        if (notes.getValue(j) > notes.getValue(j+1)){ 
+            Note temp = notes.getNote(j); 
+            notes.changeValue(j,notes.getNote(j+1));
+            notes.changeValue(j+1,temp);
         } 
       }
       index++;
       isArraySort = isSort();
+    } else {
+      int randomIndex = int(random(0,notes.size()));
+      notes.getNote(randomIndex).play();
     }
   }
 }
 
 class InsertionSort extends Sort {
   
-  public InsertionSort(int[] array){
-    super(array,1);
+  public InsertionSort(ListOfNotes notes){
+    super(notes,1);
   }
   
   public void doSort(){
     if(!isArraySort){
-      int keySort = array[index]; 
-      int j = index - 1; 
+      Note keySort = notes.getNote(index); 
+      int j = index - 1;
 
-      /* Move elements of arr[0..i-1], that are 
-         greater than key, to one position ahead 
-         of their current position */
-      while (j >= 0 && array[j] > keySort) { 
-          array[j + 1] = array[j]; 
-          j = j - 1; 
+      while (j >= 0 && notes.getValue(j) > keySort.getValue()) { 
+          notes.changeValue(j+1,notes.getNote(j));
+          j = j - 1;
       } 
-      array[j + 1] = keySort;
+      notes.changeValue(j+1,keySort);
       index++;
       isArraySort = isSort();
+    } else {
+      int randomIndex = int(random(0,notes.size()));
+      notes.getNote(randomIndex).play();
     }
   }
 }
 
 class GnomeSort extends Sort {
   
-  public GnomeSort(int[] array){
-    super(array,0);
+  public GnomeSort(ListOfNotes notes){
+    super(notes,0);
   }
   
   public void doSort(){
     if(!isArraySort){
       if (index == 0) index++; 
-      if (array[index] >= array[index - 1]) 
+      if (notes.getValue(index) >= notes.getValue(index - 1)) 
           index++; 
       else { 
-          int temp = 0; 
-          temp = array[index]; 
-          array[index] = array[index - 1];
-          array[index - 1] = temp; 
+          Note temp = notes.getNote(index); 
+          notes.changeValue(index,notes.getNote(index - 1));
+          notes.changeValue(index - 1,temp);
           index--;
       }
       isArraySort = isSort();
+    } else {
+      int randomIndex = int(random(0,notes.size()));
+      notes.getNote(randomIndex).play();
     }
   }
 }

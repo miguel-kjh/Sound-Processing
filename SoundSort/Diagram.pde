@@ -15,7 +15,7 @@ class Diagram {
   }
   
   public void buildCharBar(int[] array){
-    int amount = 40;
+    int amount = 30;
     for(int index = 0; index < array.length; index++){
       charBar.add(new Bar(x1+amount,y2-array[index],array[index]-30, color(255,0,0)));
       amount += 30;
