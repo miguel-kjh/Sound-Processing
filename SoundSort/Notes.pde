@@ -65,8 +65,8 @@ class ListOfNotes{
     note.play();
   }
   
-  public int[] getValues(){
-    int[] v = new int[listOfNotes.size()];
+  public Integer[] getValues(){
+    Integer[] v = new Integer[listOfNotes.size()];
     for(int i = 0; i < v.length; i++){
       v[i] = listOfNotes.get(i).getValue();
     }
@@ -78,7 +78,8 @@ class ListOfNotes{
   }
   
   public void playList(){
-    for(Note note: listOfNotes){       note.play();
+    for(Note note: listOfNotes){       
+      note.play();
     }
   }
   

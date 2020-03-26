@@ -14,20 +14,20 @@ class Diagram {
     
   }
   
-  public void buildCharBar(int[] array){
-    int amount = 30;
+  public void buildCharBar(Integer[] array){
+    int amount = 100;
     for(int index = 0; index < array.length; index++){
-      charBar.add(new Bar(x1+amount,y2-array[index],array[index]-30, color(255,0,0)));
-      amount += 30;
+      charBar.add(new Bar(amount,height+30-array[index],array[index]-30, color(255,0,0)));
+      amount += 10;
     }
   }
   
   public void paintDiagram(){
-    paintLine(x1,y1,x1+widthLines,y1);
+    //paintLine(x1,y1,x1+widthLines,y1);
     for(Bar bar:charBar){
       bar.paintBar();
     }
-    paintLine(x2,y2,x2,y2-widthLines);
+    //paintLine(x2,y2,x2,y2-widthLines);
   }
   
   private void paintLine(float ax,float ay,float bx, float by){

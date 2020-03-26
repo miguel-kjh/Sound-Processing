@@ -1,13 +1,14 @@
 abstract class Sort{
   
   protected ListOfNotes notes;
-  protected int index;
+  protected int index,initialIndex;
   protected boolean isArraySort;
   
   public Sort(ListOfNotes notes, int index){
-    this.notes = notes;
-    this.index = index;
-    this.isArraySort = isSort();
+    this.notes        = notes;
+    this.index        = index;
+    this.initialIndex = index;
+    this.isArraySort  = isSort();
   }
   
   protected boolean isSort(){
@@ -21,7 +22,7 @@ abstract class Sort{
   
   public abstract void doSort();
   
-  public int[] getArray(){
+  public Integer[] getArray(){
     return notes.getValues();
   }
   
@@ -31,6 +32,7 @@ abstract class Sort{
   
   public void shuflle(){
     notes.shuflle();
+    index = initialIndex;
     this.isArraySort = isSort();
   }
 }
@@ -51,9 +53,6 @@ class SelectionSort extends Sort{
       notes.changeValue(index,temp);
       index++;
       isArraySort = isSort();
-    } else {
-      int randomIndex = int(random(0,notes.size()));
-      notes.getNote(randomIndex).play();
     }
   }
 }
@@ -75,10 +74,7 @@ class BubbleSort extends Sort {
       }
       index++;
       isArraySort = isSort();
-    } else {
-      int randomIndex = int(random(0,notes.size()));
-      notes.getNote(randomIndex).play();
-    }
+    } 
   }
 }
 
@@ -100,10 +96,7 @@ class InsertionSort extends Sort {
       notes.changeValue(j+1,keySort);
       index++;
       isArraySort = isSort();
-    } else {
-      int randomIndex = int(random(0,notes.size()));
-      notes.getNote(randomIndex).play();
-    }
+    } 
   }
 }
 
@@ -125,9 +118,6 @@ class GnomeSort extends Sort {
           index--;
       }
       isArraySort = isSort();
-    } else {
-      int randomIndex = int(random(0,notes.size()));
-      notes.getNote(randomIndex).play();
-    }
+    } 
   }
 }
