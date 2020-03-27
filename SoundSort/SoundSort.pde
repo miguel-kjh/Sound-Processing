@@ -57,7 +57,7 @@ void setup() {
 }
 
 void draw() {
-  background(255,255,255);
+  background(221, 214, 216);
   paintInstrutions();
   switch(choose) {
     case SELECTION:
@@ -111,50 +111,80 @@ void paintBox(){
 void paintInstrutions(){
   noFill();
   fill(0);
-  text("Q->Selection Sort", width*0.15, 20);
-  text("W->Bubble Sort", width*0.35, 20);
-  text("E->Insertion Sort", width*0.55, 20);
-  text("R->Gnome Sort", width*0.75, 20);
+  switch(choose) {
+    case SELECTION:
+      fill(255,0,0);
+      text("Q->Selection Sort", width*0.15, 20);
+      fill(0);
+      text("W->Bubble Sort", width*0.35, 20);
+      text("E->Insertion Sort", width*0.55, 20);
+      text("R->Gnome Sort", width*0.75, 20);
+      break;
+    case BUBBLE:
+      text("Q->Selection Sort", width*0.15, 20);
+      fill(255,0,0);
+      text("W->Bubble Sort", width*0.35, 20);
+      fill(0);
+      text("E->Insertion Sort", width*0.55, 20);
+      text("R->Gnome Sort", width*0.75, 20);
+      break;
+    case INSERTION:
+      text("Q->Selection Sort", width*0.15, 20);
+      text("W->Bubble Sort", width*0.35, 20);
+      fill(255,0,0);
+      text("E->Insertion Sort", width*0.55, 20);
+      fill(0);
+      text("R->Gnome Sort", width*0.75, 20);
+      break;
+    case GNOME:
+      text("Q->Selection Sort", width*0.15, 20);
+      text("W->Bubble Sort", width*0.35, 20);
+      text("E->Insertion Sort", width*0.55, 20);
+      fill(255,0,0);
+      text("R->Gnome Sort", width*0.75, 20);
+      break;
+    default:
+      fill(0);
+      text("Q->Selection Sort", width*0.15, 20);
+      text("W->Bubble Sort", width*0.35, 20);
+      text("E->Insertion Sort", width*0.55, 20);
+      text("R->Gnome Sort", width*0.75, 20);
+      break;
+  }
 }
 
 void keyPressed(){
   if(isSorted && (key=='s' || key == 'S')){
-    switch(choose) {
-      case SELECTION:
-        selection.shuflle();
-        break;
-      case BUBBLE:
-        bubbleSort.shuflle();
-        break;
-      case INSERTION:
-        insertionSort.shuflle();
-        break;
-      case GNOME:
-        gnomeSort.shuflle();
-        break;
-      default:
-        break;
-    }
+    notes.shuflle();
+    selection     = new SelectionSort(notes);
+    bubbleSort    = new BubbleSort(notes);
+    insertionSort = new InsertionSort(notes);
+    gnomeSort     = new GnomeSort(notes);
   }
   
   if(key=='q' || key=='Q'){
     choose    = SortAlgoritm.SELECTION;
+    selection.resetIndex();
     daleyTime = 500;
   }
   
   if(key=='w' || key=='W'){
     choose    = SortAlgoritm.BUBBLE;
+    bubbleSort.resetIndex();
     daleyTime = 900;
   }
   
   if(key=='e' || key=='E'){
     choose    = SortAlgoritm.INSERTION;
+    insertionSort.resetIndex();
     daleyTime = 600;
   }
   
   if(key=='r' || key=='R'){
     choose    = SortAlgoritm.GNOME;
+    gnomeSort.resetIndex();
     daleyTime = 150;
   }
+  
   
 }
