@@ -17,26 +17,15 @@ class Diagram {
   public void buildCharBar(Integer[] array){
     int amount = 100;
     for(int index = 0; index < array.length; index++){
-      charBar.add(new Bar(amount,height+30-array[index],array[index]-30, color(255,0,0)));
+      charBar.add(new Bar(amount,(height)-array[index],array[index], color(255,0,0)));
       amount += 10;
     }
   }
   
   public void paintDiagram(){
-    //paintLine(x1,y1,x1+widthLines,y1);
     for(Bar bar:charBar){
       bar.paintBar();
     }
-    //paintLine(x2,y2,x2,y2-widthLines);
-  }
-  
-  private void paintLine(float ax,float ay,float bx, float by){
-    int sw = 5;
-    noFill();
-    strokeWeight(sw);
-    fill(0);
-    line(ax,ay,bx,by);
-    
   }
   
   public void removeChar(){

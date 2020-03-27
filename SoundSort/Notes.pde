@@ -80,6 +80,7 @@ class ListOfNotes{
   public void playList(){
     for(Note note: listOfNotes){       
       note.play();
+      delay(500);
     }
   }
   

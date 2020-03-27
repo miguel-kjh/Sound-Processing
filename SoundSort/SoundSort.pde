@@ -15,6 +15,7 @@ AudioOutput out;
 ListOfNotes notes;
 int daleyTime;
 SortAlgoritm choose;
+boolean isSorted;
 
 Integer[] v     = {
                10,20,30,40,50,60,80,90,100,
@@ -40,22 +41,24 @@ void setup() {
   out = minim.getLineOut();
   charBar   = new Diagram(width*0.05,height*0.8,width*0.10,height*0.85, int(width*0.8));
   notes     = new ListOfNotes();
-  List<Integer> l = Arrays.asList(v);
-  Collections.shuffle(l);
-  v = (Integer[])l.toArray();
   for(int i = 0; i < v.length; i++){
      notes.add(new Note(v[i],n[i])); 
   }
+  notes.shuflle();
+  v             = notes.getValues();
   selection     = new SelectionSort(notes);
   bubbleSort    = new BubbleSort(notes);
   insertionSort = new InsertionSort(notes);
   gnomeSort     = new GnomeSort(notes);
   choose        = SortAlgoritm.NONE;
   daleyTime     = 0;
+  isSorted      = false;
+  textAlign(CENTER,CENTER);
 }
 
 void draw() {
   background(255,255,255);
+  paintInstrutions();
   switch(choose) {
     case SELECTION:
       drawCharBar(selection);
@@ -83,19 +86,39 @@ void drawCharBar(){
 
 void drawCharBar(Sort sortAlgoritm){
   charBar.buildCharBar(sortAlgoritm.getArray());
-  if(sortAlgoritm.itSorted()){
-    noFill();
-    fill(0);
-    text("Sorted!!!", width/2, height/2);
-  }
+  isSorted = sortAlgoritm.itSorted();
   charBar.paintDiagram();
-  delay(daleyTime);
-  sortAlgoritm.doSort();
+  if(isSorted){
+    paintBox();
+  } else {
+     delay(daleyTime);
+     sortAlgoritm.doSort();
+  }
   charBar.removeChar();
 }
 
+void paintBox(){
+  noFill();
+  fill(0);
+  text("Sorted!!!", width*0.5,height*0.3);
+  text("S->shuflle",  width * 0.45, height*0.1);
+  line(width*0.4,height*0.4, width*0.6,height*0.4);
+  line(width*0.4,height*0.4, width*0.4,height*0.2);
+  line(width*0.6,height*0.4, width*0.6,height*0.2);
+  line(width*0.4,height*0.2, width*0.6,height*0.2);
+}
+
+void paintInstrutions(){
+  noFill();
+  fill(0);
+  text("Q->Selection Sort", width*0.15, 20);
+  text("W->Bubble Sort", width*0.35, 20);
+  text("E->Insertion Sort", width*0.55, 20);
+  text("R->Gnome Sort", width*0.75, 20);
+}
+
 void keyPressed(){
-  if(key=='s' || key == 'S'){
+  if(isSorted && (key=='s' || key == 'S')){
     switch(choose) {
       case SELECTION:
         selection.shuflle();

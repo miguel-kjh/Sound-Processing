@@ -53,7 +53,7 @@ class SelectionSort extends Sort{
       notes.changeValue(index,temp);
       index++;
       isArraySort = isSort();
-    }
+    } 
   }
 }
 
