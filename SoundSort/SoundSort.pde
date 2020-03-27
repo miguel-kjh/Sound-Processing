@@ -101,7 +101,7 @@ void paintBox(){
   noFill();
   fill(0);
   text("Sorted!!!", width*0.5,height*0.3);
-  text("S->shuflle",  width * 0.45, height*0.1);
+  text("S->shuflle",  width * 0.5, height*0.35);
   line(width*0.4,height*0.4, width*0.6,height*0.4);
   line(width*0.4,height*0.4, width*0.4,height*0.2);
   line(width*0.6,height*0.4, width*0.6,height*0.2);
