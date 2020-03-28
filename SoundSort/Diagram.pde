@@ -1,16 +1,8 @@
 class Diagram {
   private ArrayList<Bar> charBar;
-  float x1,y1;
-  float x2,y2;
-  int widthLines;
   
-  public Diagram(float x1,float y1, float x2, float y2, int widthLines){
-    this.x1         = x1;
-    this.x2         = x2;
-    this.y1         = y1;
-    this.y2         = y2;
+  public Diagram(){
     this.charBar    = new ArrayList(); 
-    this.widthLines = widthLines;
     
   }
   

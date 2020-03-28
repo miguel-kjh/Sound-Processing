@@ -18,21 +18,21 @@ class Note {
 }
 
 class SineInstrument implements Instrument {
-  Oscil wave;
-  Line  ampEnv;
+  private Oscil wave;
+  private Line  ampEnv;
  
-  SineInstrument(float frequency){
+  public SineInstrument(float frequency){
     wave   = new Oscil( frequency, 0, Waves.SINE);
     ampEnv = new Line();
     ampEnv.patch(wave.amplitude);
   }
   
-  void noteOn( float duration ){
+  public void noteOn( float duration ){
     ampEnv.activate(duration, 0.5f, 0);
     wave.patch(out);
   }
   
-  void noteOff(){
+  public void noteOff(){
     wave.unpatch(out);
   }
 }
@@ -75,13 +75,6 @@ class ListOfNotes{
   
   public void shuflle(){
     Collections.shuffle(listOfNotes);
-  }
-  
-  public void playList(){
-    for(Note note: listOfNotes){       
-      note.play();
-      delay(500);
-    }
   }
   
   public void playNote(int index){

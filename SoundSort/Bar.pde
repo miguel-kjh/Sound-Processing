@@ -19,8 +19,4 @@ class Bar {
     rect(x,y,widthBar,value);
   }
   
-  /*public void sound(){
-  
-  }*/
-  
 }
