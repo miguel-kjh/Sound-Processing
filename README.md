@@ -16,7 +16,7 @@ Correo: miguel.medina108@alu.ulpgc.es
 5. [Bibliografía](#bibliografía)
 
 ## Introducción
-Para esta práctica se ha hecho una integración de los componentes de sonido y gráficos que disponen processing.El objetivo es comprobar cómo suenan algunos algoritmos de ordenación, para ello se ha escogido parte de una sonata de piano, donde sus notas se asignan a un vector de enteros, cada vez que algún algoritmo inicié un cambio en el orden de los elementos sonará la nota asignada.
+Para esta práctica se ha hecho una integración de los componentes de sonido y gráficos que disponen processing.El objetivo es comprobar cómo suenan algunos algoritmos de ordenación, para ello se ha escogido parte de una sonata de piano, donde sus notas se asignan a un vector de enteros, cada vez que algún algoritmo inicié un cambio en el orden de los elementos sonará la nota asignada.Además se pueden hacer combinaciones entre los algoritmos.
 
 ## Dependencias
 Para poder ejecutar y probar la práctica solamente se necesita clonar este repositorio y el editor de processing con las siguientes dependencias:
