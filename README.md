@@ -16,7 +16,7 @@ Correo: miguel.medina108@alu.ulpgc.es
 5. [Bibliografía](#bibliografía)
 
 ## Introducción
-Para esta práctica se ha hecho una integración de los componentes de sonido y gráficos que disponen processing.El objetivo es comprobar como suenan algunos algoritmos de ordenación, para ello se ha escogido parte de una sonate de piano, donde sus notas se asignarán a un vector de enteros, cada vez que algún algoritmo inicié un cambio en el orden de los elmentos sonará la nota asignada.
+Para esta práctica se ha hecho una integración de los componentes de sonido y gráficos que disponen processing.El objetivo es comprobar cómo suenan algunos algoritmos de ordenación, para ello se ha escogido parte de una sonata de piano, donde sus notas se asignan a un vector de enteros, cada vez que algún algoritmo inicié un cambio en el orden de los elementos sonará la nota asignada.
 
 ## Dependencias
 Para poder ejecutar y probar la práctica solamente se necesita clonar este repositorio y el editor de processing con las siguientes dependencias:
@@ -24,7 +24,7 @@ Para poder ejecutar y probar la práctica solamente se necesita clonar este repo
 
 ## Implementación
 
-Para hacer el diseño de clases todos los algoritmos de ordenación se encuentran bajo una misma clase abstracta y las notas se implementan mediante una lista, asimismo la interfaz se muestra como un diagrama de barras que se va movimiendo conforme los algoritmos actuen en él haciendo sonar una nota en cada movimiento o dezplazamiento
+Para hacer el diseño de clases todos los algoritmos de ordenación se encuentran bajo una misma clase abstracta y las notas se implementan mediante una lista, asimismo la interfaz se muestra como un diagrama de barras que se va moviendo conforme los algoritmos actúan en él haciendo sonar una nota en cada movimiento o desplazamiento.
 
 <p align="center">
   <img src="data/muestra.png" alt="uml">
@@ -89,12 +89,13 @@ public Sort(ListOfNotes notes, int index){
 ```
 
 #### Selection Sort
-El algoritmo por selección clasifica un vector al encontrar repetidamente el elemento mínimo (considerando el orden ascendente) de la parte no ordenada y colocarlo al principio. El algoritmo mantiene dos subvectores en un vector determinada.
-
+El algoritmo por seleccion clasifica un vector al encontrar repetidamente el elemento mínimo (considerando el orden ascendente) de la parte no ordenada y colocarlo al principio. El algoritmo mantiene dos subvectores en un vector determinada.
+ 
 1) El subvector que ya está ordenada.
 2) Subvector restante que no está ordenada.
-
+ 
 En cada iteración del orden de selección, el elemento mínimo (considerando el orden ascendente) del subconjunto no ordenado se selecciona y se mueve al subconjunto ordenado.
+
 
 **Complejidad del tiempo**: O(n²) ya que hay dos bucles anidados.
 
@@ -286,7 +287,7 @@ class SineInstrument implements Instrument {
   </tr>
   <tr>
     <td>S</td>
-    <td>Distribuir los datos del vector aleatorimente</td>
+    <td>Distribuir los datos del vector aleatoriamente</td>
   </tr>
 </table>
 
